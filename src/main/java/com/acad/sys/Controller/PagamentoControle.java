@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/pagamentos")
 public class PagamentoControle {
@@ -51,4 +52,17 @@ public class PagamentoControle {
     public void deletar(@PathVariable Long id) {
         pagamentoRepositorio.deleteById(id);
     }
+
+    @GetMapping("/ultimos")
+    public List<Pagamento> getUltimosPagamentos() {
+        return pagamentoRepositorio.findTop5ByOrderByDataDesc();
+    }
+
+    @GetMapping("/aluno/{idAluno}")
+    public List<Pagamento> listarPorAluno(@PathVariable Long idAluno) {
+        Aluno aluno = alunoRepositorio.findById(idAluno)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+        return pagamentoRepositorio.findByAluno(aluno);
+    }
+
 }
