@@ -40,6 +40,12 @@ public class AlunoControle {
         aluno.setNome(alunoAtualizado.getNome());
         aluno.setEmail(alunoAtualizado.getEmail());
         aluno.setTelefone(alunoAtualizado.getTelefone());
+        aluno.setDataNascimento(alunoAtualizado.getDataNascimento());
+        aluno.setCpf(alunoAtualizado.getCpf());
+        aluno.setCep(alunoAtualizado.getCep());
+        aluno.setBairro(alunoAtualizado.getBairro());
+        aluno.setLogradouro(alunoAtualizado.getLogradouro());
+        aluno.setNumero(alunoAtualizado.getNumero());
         return alunoRepositorio.save(aluno);
     }
 
