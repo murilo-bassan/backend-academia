@@ -45,6 +45,7 @@ public class PagamentoControle {
         Pagamento pagamento = pagamentoRepositorio.findById(id).orElseThrow(() -> new RuntimeException("Pagamento não encontrado"));
         pagamento.setValor(pagamentoAtualizado.getValor());
         pagamento.setData(pagamentoAtualizado.getData());
+        pagamento.setHora(pagamentoAtualizado.getHora());
         return pagamentoRepositorio.save(pagamento);
     }
 
