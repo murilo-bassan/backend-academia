@@ -13,7 +13,7 @@ public interface PagamentoRepositorio extends JpaRepository<Pagamento, Long> {
     List<Pagamento> findByAluno(Aluno aluno);
     
     // Buscar os últimos 5 pagamentos, ordenados por data em ordem decrescente
-    @Query("SELECT p FROM Pagamento p ORDER BY p.data DESC")
+@Query("SELECT p FROM Pagamento p ORDER BY p.data DESC LIMIT 5")
     List<Pagamento> findTop5ByOrderByDataDesc();
 
 }
