@@ -44,6 +44,7 @@ public class PagamentoControle {
     public Pagamento atualizar(@PathVariable Long id, @RequestBody Pagamento pagamentoAtualizado) {
         Pagamento pagamento = pagamentoRepositorio.findById(id).orElseThrow(() -> new RuntimeException("Pagamento não encontrado"));
         pagamento.setValor(pagamentoAtualizado.getValor());
+        pagamento.setVencimento(pagamentoAtualizado.getVencimento());
         pagamento.setData(pagamentoAtualizado.getData());
         pagamento.setHora(pagamentoAtualizado.getHora());
         return pagamentoRepositorio.save(pagamento);
@@ -64,6 +65,11 @@ public class PagamentoControle {
         Aluno aluno = alunoRepositorio.findById(idAluno)
                 .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
         return pagamentoRepositorio.findByAluno(aluno);
+    }
+
+    @GetMapping("/aluno/{idAluno}/ultimo")
+    public Optional<Pagamento> getUltimoPagamento(@PathVariable Long idAluno) {
+        return pagamentoRepositorio.findTopByAlunoIdOrderByVencimentoDesc(idAluno);
     }
 
 }
