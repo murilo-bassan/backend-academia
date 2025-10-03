@@ -13,8 +13,8 @@ public class AdminSeedConfig {
     @Bean
     CommandLineRunner seedAdmin(AdminUserRepositorio repo, PasswordEncoder encoder) {
         return args -> {
-            String email = "admin@academia.com"; // dev
-            String senha = "123456"; // dev
+            String email = System.getenv().getOrDefault("ADMIN_EMAIL", "admin@academia.com");
+            String senha = System.getenv().getOrDefault("ADMIN_PASS", "123456");
 
             repo.findByEmail(email).orElseGet(() -> {
                 AdminUser u = new AdminUser();
