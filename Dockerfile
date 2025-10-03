@@ -12,14 +12,11 @@ COPY pom.xml .
 # Dá permissão pro mvnw
 RUN chmod +x mvnw
 
-# Baixa dependências
-RUN ./mvnw dependency:go-offline
-
 # Copia o código fonte
 COPY src ./src
 
-# Builda o jar
-RUN ./mvnw package -DskipTests
+# Compila e gera o jar (sem rodar testes)
+RUN ./mvnw clean package -DskipTests
 
 # Expõe a porta
 EXPOSE 8080
