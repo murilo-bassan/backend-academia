@@ -47,6 +47,7 @@ public class PagamentoControle {
         pagamento.setVencimento(pagamentoAtualizado.getVencimento());
         pagamento.setData(pagamentoAtualizado.getData());
         pagamento.setHora(pagamentoAtualizado.getHora());
+        pagamento.setFormaPagamento(pagamentoAtualizado.getFormaPagamento());
         return pagamentoRepositorio.save(pagamento);
     }
 

@@ -16,6 +16,8 @@ public class Pagamento {
     private LocalDate data;
     private LocalTime hora;
     private Double valor;
+    @Column(name = "forma_pagamento")
+    private String formaPagamento;
 
     @ManyToOne
     @JoinColumn(name = "id_aluno", nullable = false)
@@ -68,5 +70,13 @@ public class Pagamento {
 
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
+    }
+
+    public String getFormaPagamento() {
+        return formaPagamento;
+    }
+
+    public void setFormaPagamento(String formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 }
