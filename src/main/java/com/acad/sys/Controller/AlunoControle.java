@@ -46,6 +46,7 @@ public class AlunoControle {
         aluno.setBairro(alunoAtualizado.getBairro());
         aluno.setLogradouro(alunoAtualizado.getLogradouro());
         aluno.setNumero(alunoAtualizado.getNumero());
+        aluno.setObservacao(alunoAtualizado.getObservacao());
         return alunoRepositorio.save(aluno);
     }
 
