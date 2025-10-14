@@ -25,6 +25,9 @@ public class Aluno {
     private String logradouro;
     private String numero;
 
+    @Column(length = 255)
+    private String observacao;
+
     @OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL, orphanRemoval = true)
     @com.fasterxml.jackson.annotation.JsonIgnore
     private List<Pagamento> pagamentos;
@@ -115,5 +118,13 @@ public class Aluno {
 
     public void setPagamentos(List<Pagamento> pagamentos) {
         this.pagamentos = pagamentos;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 }
